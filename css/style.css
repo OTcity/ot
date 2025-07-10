@@ -1048,7 +1048,7 @@ footer {
 @media (max-width: 768px) {
     .image-popup-close {
         top: -15px;
-        right: -15px;
+        right: 0px; /* 15px mais para a esquerda: -15px + 15px = 0px */
         width: 40px;
         height: 40px;
         font-size: 1.4rem;
@@ -1079,7 +1079,7 @@ footer {
 @media (max-width: 480px) {
     .image-popup-close {
         top: -10px;
-        right: -10px;
+        right: 5px; /* 15px mais para a esquerda: -10px + 15px = 5px */
         width: 40px;
         height: 40px;
         font-size: 1.3rem;
