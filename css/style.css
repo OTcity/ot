@@ -1026,7 +1026,7 @@ footer {
 /* FORÇA A POSIÇÃO DO BOTÃO - Especificidade maior */
 .image-popup-overlay .image-container .image-popup-close {
     top: -40px !important;
-    right: -25px !important; /* 15px mais à esquerda: -10px - 15px = -25px */
+    right: 5px !important; /* 15px mais à esquerda que -10px = 5px */
     position: absolute !important;
 }
 
@@ -1048,7 +1048,7 @@ footer {
 @media (max-width: 768px) {
     .image-popup-close {
         top: -15px !important;
-        right: -30px !important; /* 15px mais à esquerda que antes */
+        right: 0px !important; /* 15px mais à esquerda que -15px */
         width: 40px;
         height: 40px;
         font-size: 1.4rem;
@@ -1062,7 +1062,7 @@ footer {
     /* FORÇA POSIÇÃO NO MOBILE - Especificidade máxima */
     .image-popup-overlay .image-container .image-popup-close {
         top: -15px !important;
-        right: -30px !important;
+        right: 0px !important;
     }
     
     .image-popup-close:hover {
@@ -1085,7 +1085,7 @@ footer {
 @media (max-width: 480px) {
     .image-popup-close {
         top: -10px !important;
-        right: -25px !important; /* 15px mais à esquerda */
+        right: 5px !important; /* 15px mais à esquerda que -10px */
         width: 40px;
         height: 40px;
         font-size: 1.3rem;
@@ -1099,7 +1099,7 @@ footer {
     /* FORÇA POSIÇÃO NO MOBILE PEQUENO - Especificidade máxima */
     .image-popup-overlay .image-container .image-popup-close {
         top: -10px !important;
-        right: -25px !important;
+        right: 5px !important;
     }
     
     .image-popup-close:hover {
