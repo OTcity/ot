@@ -7,13 +7,50 @@
     <meta name="keywords" content="placas decorativas, placas decorativas anime, decoração otaku, placas personalizadas, quadros anime, mangá, cultura japonesa, decoração quarto otaku, placas anime, Naruto, Dragon Ball, One Piece, Attack on Titan, Demon Slayer">
     <meta name="robots" content="index, follow">
     <title>Otaku City | Placas Decorativas Anime - Qualidade Implacável</title>
-    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- CRITICAL CSS INLINE -->
+    <style>
+        /* Critical CSS - Above the fold */
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#FF2D54;--secondary:#00B8FF;--dark:#0F0F1B;--light:#FFFFFF;--accent:#FFD700}
+        body{background-color:var(--dark);color:var(--light);font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+        header{padding:8px 15px;display:flex;justify-content:space-between;align-items:center;background:rgba(15,15,27,0.9);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--primary);min-height:80px;gap:25px}
+        .logo{display:flex;align-items:center;flex:1;min-width:0}
+        .logo img{height:70px;width:auto;max-height:75px;max-width:350px;object-fit:contain}
+        .cta-button{padding:12px 28px;font-size:1.1rem;font-weight:700;background:linear-gradient(45deg,var(--primary),var(--secondary));color:white;text-decoration:none;border-radius:30px;box-shadow:0 4px 15px rgba(255,45,84,0.3);white-space:nowrap;border:none;cursor:pointer;display:inline-block}
+        .hero{text-align:center;padding:30px 15px 50px;background:radial-gradient(circle at top,#2A0C4E 0%,var(--dark) 70%)}
+        h1{font-size:2.3rem;margin-bottom:15px;line-height:1.3}
+        .highlight{color:var(--accent);font-weight:700}
+        .price-tag{background:linear-gradient(45deg,var(--primary),var(--secondary));color:white;padding:8px 20px;border-radius:30px;display:inline-block;margin:20px 0;font-weight:700;font-size:1.5rem;box-shadow:0 5px 15px rgba(255,45,84,0.4);text-decoration:none;cursor:pointer}
+        .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:30px 25px;max-width:calc(100vw - 30px)}
+        .video-container{border-radius:10px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,0.5);position:relative;width:100%;height:0;padding-bottom:177.78%}
+        .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+        @media (max-width:768px){
+            header{padding:6px 12px;min-height:70px;gap:20px}
+            .logo img{height:60px;max-height:65px;max-width:280px}
+            .cta-button{padding:10px 22px;font-size:1rem}
+            h1{font-size:1.8rem}
+        }
+    </style>
+    
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="https://i.ibb.co/5fx7ydb/OC.png" as="image" type="image/png">
+    <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
+    
+    <!-- PRECONNECT TO EXTERNAL DOMAINS -->
+    <link rel="preconnect" href="https://i.ibb.co" crossorigin>
+    <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+    <link rel="preconnect" href="https://wa.me" crossorigin>
+    
+    <!-- DNS PREFETCH -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//web.whatsapp.com">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="https://i.ibb.co/5fx7ydb/OC.png" alt="Otaku City Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="logo-text">OTAKU <span>CITY</span></div>
+            <img src="https://i.ibb.co/5fx7ydb/OC.png" alt="Otaku City Logo" width="350" height="75" loading="eager">
         </div>
         <div class="header-cta">
             <a href="pages/catalogo.html" class="cta-button">VER CATÁLOGO</a>
@@ -30,12 +67,12 @@
 
         <div class="video-grid">
             <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/1097998940?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&controls=0" loading="lazy" allow="autoplay; fullscreen"></iframe>
+                <iframe src="https://player.vimeo.com/video/1097998940?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&controls=0" loading="lazy" allow="autoplay; fullscreen" title="Banca na Praça da Liberdade"></iframe>
                 <div class="video-label">📍 Banca na Praça da Liberdade</div>
             </div>
 
             <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/1097998959?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&controls=0" loading="lazy" allow="autoplay; fullscreen"></iframe>
+                <iframe src="https://player.vimeo.com/video/1097998959?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&controls=0" loading="lazy" allow="autoplay; fullscreen" title="Detalhe da Qualidade Gráfica"></iframe>
                 <div class="video-label">🖼️ Detalhe da Qualidade Gráfica</div>
             </div>
         </div>
@@ -50,78 +87,78 @@
                 <div class="carousel-track" id="carouselTrack">
                     <div class="carousel-slide">
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Naruto/" target="_blank">
-                                <img src="https://i.ibb.co/1GSVPdc1/N-52.jpg" alt="Naruto Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/Naruto/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/1GSVPdc1/N-52.jpg" alt="Naruto Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/One_Piece/" target="_blank">
-                                <img src="https://i.ibb.co/S7Mt7QYb/OP-4.jpg" alt="One Piece Design" loading="lazy">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="carousel-slide">
-                        <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Solo/" target="_blank">
-                                <img src="https://i.ibb.co/tMcDwhdd/2.jpg" alt="Solo Leveling Design" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Vagabond/" target="_blank">
-                                <img src="https://i.ibb.co/zTZnQmTk/1.jpg" alt="Dragon Ball Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/One_Piece/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/S7Mt7QYb/OP-4.jpg" alt="One Piece Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Diarios-de-uma-Apotecaria/" target="_blank">
-                                <img src="https://i.ibb.co/274zB8XF/dua-4.jpg" alt="Attack on Titan Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/Solo/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/tMcDwhdd/2.jpg" alt="Solo Leveling Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Frieren/" target="_blank">
-                                <img src="https://i.ibb.co/VpwGJCNd/f-2.jpg" alt="Demon Slayer Design" loading="lazy">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="carousel-slide">
-                        <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/kny/" target="_blank">
-                                <img src="https://i.ibb.co/M5RK3ZFD/3.jpg" alt="My Hero Academia Design" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Ghibli/" target="_blank">
-                                <img src="https://i.ibb.co/zWd9M6hH/Gui-23.jpg" alt="Jujutsu Kaisen Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/Vagabond/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/zTZnQmTk/1.jpg" alt="Vagabond Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/berserk/" target="_blank">
-                                <img src="https://i.ibb.co/6JDrWKHV/03.jpg" alt="Tokyo Ghoul Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/Diarios-de-uma-Apotecaria/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/274zB8XF/dua-4.jpg" alt="Diários de uma Apotecária Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/Death-Note/" target="_blank">
-                                <img src="https://i.ibb.co/VYk2YbSz/DN-1.jpg" alt="Death Note Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/Frieren/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/VpwGJCNd/f-2.jpg" alt="Frieren Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/HelloKitty/" target="_blank">
-                                <img src="https://i.ibb.co/5gv28t2W/HK-15.jpg" alt="Fullmetal Alchemist Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/kny/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/M5RK3ZFD/3.jpg" alt="Demon Slayer Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="https://otakucitybr.github.io/ar/" target="_blank">
-                                <img src="https://i.ibb.co/LXn3WLdg/01.jpg" alt="Evangelion Design" loading="lazy">
+                            <a href="https://otakucitybr.github.io/Ghibli/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/zWd9M6hH/Gui-23.jpg" alt="Studio Ghibli Design" loading="lazy" width="200" height="283">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="carousel-item">
+                            <a href="https://otakucitybr.github.io/berserk/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/6JDrWKHV/03.jpg" alt="Berserk Design" loading="lazy" width="200" height="283">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="https://otakucitybr.github.io/Death-Note/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/VYk2YbSz/DN-1.jpg" alt="Death Note Design" loading="lazy" width="200" height="283">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="carousel-item">
+                            <a href="https://otakucitybr.github.io/HelloKitty/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/5gv28t2W/HK-15.jpg" alt="Hello Kitty Design" loading="lazy" width="200" height="283">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="https://otakucitybr.github.io/ar/" target="_blank" rel="noopener">
+                                <img src="https://i.ibb.co/LXn3WLdg/01.jpg" alt="Arcane Design" loading="lazy" width="200" height="283">
                             </a>
                         </div>
                     </div>
@@ -140,21 +177,21 @@
             <h3 class="product-title">🔥 PLACA "P" PADRÃO (20x30cm) - MAIS VENDIDA</h3>
             <div class="product-price">R$ 12,00</div>
             <span class="bulk-discount">💰 Desconto progressivo: 5+ placas = R$ 10,00 cada</span>
-            <a href="https://wa.me/5511958588616?text=Olá! Gostaria de comprar uma placa P (20x30cm) - R$ 12,00" class="cta-button">COMPRAR AGORA</a>
+            <a href="https://wa.me/5511958588616?text=Olá! Gostaria de comprar uma placa P (20x30cm) - R$ 12,00" class="cta-button" rel="noopener">COMPRAR AGORA</a>
         </div>
 
         <div class="product-card">
             <h3 class="product-title">⭐ PLACA "G" GRANDE (30x40cm) - PREMIUM</h3>
             <div class="product-price">R$ 25,00</div>
             <span class="bulk-discount">💰 Desconto progressivo: 3+ placas = R$ 20,00 cada</span>
-            <a href="https://wa.me/5511958588616?text=Olá! Gostaria de comprar uma placa G (30x40cm) - R$ 25,00" class="cta-button">COMPRAR AGORA</a>
+            <a href="https://wa.me/5511958588616?text=Olá! Gostaria de comprar uma placa G (30x40cm) - R$ 25,00" class="cta-button" rel="noopener">COMPRAR AGORA</a>
         </div>
 
         <div class="product-card">
             <h3 class="product-title">🎯 PhotoCards "PC" (em breve)</h3>
             <div class="product-price">R$ 8,00</div>
             <span class="bulk-discount">💰 Desconto progressivo: 10+ pc's = R$ 5,00 cada</span>
-            <a href="https://wa.me/5511958588616?text=Olá! Gostaria saber mais sobre a reserva de PhotoCards" class="cta-button">RESERVE O SEU</a>
+            <a href="https://wa.me/5511958588616?text=Olá! Gostaria saber mais sobre a reserva de PhotoCards" class="cta-button" rel="noopener">RESERVE O SEU</a>
         </div>
     </section>
 
@@ -174,7 +211,7 @@
         </a>
 
         <div class="footer-logo">
-            <img src="https://i.ibb.co/y3wvPbx/OCT.png" alt="Otaku City Logo">
+            <img src="https://i.ibb.co/y3wvPbx/OCT.png" alt="Otaku City Logo" loading="lazy" width="200" height="120">
         </div>
 
         <hr class="footer-divider">
@@ -189,10 +226,30 @@
     <div class="video-popup-overlay" id="videoPopup">
         <div class="video-popup-content">
             <button class="video-popup-close" id="closePopup">×</button>
-            <iframe class="video-popup-iframe" id="popupVideo" src="" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+            <iframe class="video-popup-iframe" id="popupVideo" src="" allow="autoplay; fullscreen; picture-in-picture" title="Como Comprar"></iframe>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- LOAD NON-CRITICAL CSS -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/style.min.css';
+        document.head.appendChild(link);
+    </script>
+
+    <!-- LOAD JAVASCRIPT ASYNCHRONOUSLY -->
+    <script src="js/script.min.js" async></script>
+
+    <!-- SERVICE WORKER REGISTRATION -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
 </body>
 </html>

@@ -7,51 +7,70 @@
     <meta name="keywords" content="One Piece, placas decorativas, Luffy, Zoro, Sanji, anime, decoração otaku">
     <title>One Piece - Otaku City | Placas Decorativas Exclusivas</title>
     
-    <!-- Pré-conexões para performance -->
-    <link rel="preconnect" href="https://i.ibb.co">
-    <link rel="dns-prefetch" href="https://i.ibb.co">
-    <link rel="preconnect" href="https://wa.me">
-    <link rel="dns-prefetch" href="https://web.whatsapp.com">
+    <!-- CRITICAL CSS INLINE -->
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#FF2D54;--secondary:#00B8FF;--dark:#0F0F1B;--light:#FFFFFF;--accent:#FFD700}
+        body{background-color:var(--dark);color:var(--light);font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+        header{padding:8px 15px;display:flex;justify-content:space-between;align-items:center;background:rgba(15,15,27,0.9);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--primary);min-height:80px;gap:25px}
+        .logo{display:flex;align-items:center;flex:1;min-width:0}
+        .logo img{height:70px;width:auto;max-height:75px;max-width:350px;object-fit:contain}
+        .cta-button{padding:12px 28px;font-size:1.1rem;font-weight:700;background:linear-gradient(45deg,var(--primary),var(--secondary));color:white;text-decoration:none;border-radius:30px;box-shadow:0 4px 15px rgba(255,45,84,0.3);white-space:nowrap;border:none;cursor:pointer;display:inline-block}
+        .page-header{background:linear-gradient(135deg,#1A0A2E 0%,var(--dark) 100%);text-align:center;padding:40px 15px;margin-bottom:30px}
+        .page-title{font-size:2.5rem;color:var(--accent);margin-bottom:15px}
+        .back-button{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);color:white;padding:10px 20px;border-radius:25px;text-decoration:none;transition:all 0.3s ease;margin-bottom:20px}
+        .onepiece-gallery-section{padding:30px 15px;background:var(--dark);min-height:60vh}
+        .onepiece-gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:1400px;margin:0 auto;padding:0 10px}
+        @media (max-width:768px){
+            header{padding:6px 12px;min-height:70px;gap:20px}
+            .logo img{height:60px;max-height:65px;max-width:280px}
+            .cta-button{padding:10px 22px;font-size:1rem}
+            .page-title{font-size:2rem}
+            .onepiece-gallery-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:0 5px}
+        }
+    </style>
     
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="https://i.ibb.co/5fx7ydb/OC.png" as="image" type="image/png">
+    <link rel="preload" href="../css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/style.min.css"></noscript>
+    
+    <!-- PRECONNECT TO EXTERNAL DOMAINS -->
+    <link rel="preconnect" href="https://i.ibb.co">
+    <link rel="preconnect" href="https://wa.me">
+    
+    <!-- DNS PREFETCH -->
+    <link rel="dns-prefetch" href="https://web.whatsapp.com">
 </head>
 <body>
-    <!-- HEADER PADRÃO -->
     <header>
         <div class="logo">
-            <img src="https://i.ibb.co/5fx7ydb/OC.png" alt="Otaku City Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="logo-text">OTAKU <span>CITY</span></div>
+            <img src="https://i.ibb.co/5fx7ydb/OC.png" alt="Otaku City Logo" width="350" height="75" loading="eager">
         </div>
         <div class="header-cta">
             <a href="catalogo.html" class="cta-button">CATÁLOGO</a>
         </div>
     </header>
 
-    <!-- SEÇÃO DE TÍTULO DA PÁGINA -->
     <section class="page-header">
         <a href="catalogo.html" class="back-button">← Voltar ao Catálogo</a>
         <h1 class="page-title">🏴‍☠️ ONE PIECE</h1>
         <p class="page-subtitle">Escolha sua placa favorita do One Piece! Clique em "Quero Esta" na imagem desejada.</p>
     </section>
 
-    <!-- MOSTRUÁRIO DE IMAGENS - GRID RESPONSIVO -->
     <section class="onepiece-gallery-section">
-        <div class="onepiece-gallery-grid" id="galleryGrid">
-            <!-- IMPORTANTE: Imagens serão adicionadas dinamicamente via JavaScript -->
-            <!-- Cada imagem terá seu próprio botão "Quero Esta" -->
-        </div>
+        <div class="onepiece-gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- FOOTER PADRÃO -->
     <footer>
         <h3>🏴‍☠️ ENCONTROU SUA PLACA FAVORITA?</h3>
         <p>Entre em contato e garanta já a sua placa do One Piece!</p>
-        <a href="https://wa.me/5511958588616?text=Olá! Gostaria de fazer um pedido de placa do One Piece!" class="whatsapp-button">
+        <a href="https://wa.me/5511958588616?text=Olá! Gostaria de fazer um pedido de placa do One Piece!" class="whatsapp-button" rel="noopener">
             📱 FAZER PEDIDO
         </a>
 
         <div class="footer-logo">
-            <img src="https://i.ibb.co/y3wvPbx/OCT.png" alt="Otaku City Logo">
+            <img src="https://i.ibb.co/y3wvPbx/OCT.png" alt="Otaku City Logo" loading="lazy" width="200" height="120">
         </div>
 
         <hr class="footer-divider">
@@ -59,33 +78,35 @@
         <p class="copyright">© 2025 Otaku City - Qualidade Implacável</p>
     </footer>
 
-    <!-- BOTÃO FLUTUANTE "COMO COMPRAR" -->
     <button class="floating-help-button" id="helpButton">
         🛒 COMO COMPRAR
     </button>
 
-    <!-- POP-UP DE VÍDEO "COMO COMPRAR" -->
     <div class="video-popup-overlay" id="videoPopup">
         <div class="video-popup-content">
             <button class="video-popup-close" id="closePopup">×</button>
-            <iframe class="video-popup-iframe" id="popupVideo" src="" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+            <iframe class="video-popup-iframe" id="popupVideo" src="" allow="autoplay; fullscreen; picture-in-picture" title="Como Comprar"></iframe>
         </div>
     </div>
 
-    <!-- POP-UP DE VISUALIZAÇÃO DE IMAGEM - TEMPLATE REUTILIZÁVEL -->
-    <!-- PARA ADAPTAR: Manter esta estrutura em todas as páginas de gallery -->
     <div class="image-popup-overlay" id="imagePopup">
         <div class="image-popup-content">
-            <!-- IMAGEM EM TAMANHO COMPLETO - Proporção 1:1.4 (retrato) -->
             <div class="image-container">
                 <img class="image-popup-img" id="popupImage" src="" alt="Visualização da imagem">
-                <!-- BOTÃO FECHAR - Posicionado no canto superior direito DA IMAGEM -->
                 <button class="image-popup-close" id="closeImagePopup">×</button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT PRINCIPAL -->
-    <script src="../js/script.js"></script>
+    <!-- LOAD NON-CRITICAL CSS -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '../css/style.min.css';
+        document.head.appendChild(link);
+    </script>
+
+    <!-- LOAD JAVASCRIPT ASYNCHRONOUSLY -->
+    <script src="../js/script.min.js" async></script>
 </body>
 </html>
