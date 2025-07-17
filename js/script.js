@@ -269,7 +269,7 @@ function initVideoPlaceholders() {
                 if (placeholder && placeholder.parentNode) {
                     placeholder.remove();
                 }
-            }, 500);
+            }, 1500);
         };
         
         // Escuta quando o iframe carrega
