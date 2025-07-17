@@ -243,8 +243,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa o carrossel (apenas se os elementos existirem)
     const carousel = new ImageCarousel();
     
+    // Inicializa o sistema de placeholder para vídeos
+    initVideoPlaceholders();
+    
     console.log('Todos os componentes inicializados!');
 });
+
+// Sistema de placeholder para vídeos
+function initVideoPlaceholders() {
+    const videoContainers = document.querySelectorAll('.video-container');
+    
+    videoContainers.forEach((container, index) => {
+        const iframe = container.querySelector('iframe');
+        const placeholder = container.querySelector('.video-placeholder');
+        
+        if (!iframe || !placeholder) return;
+        
+        // Função para remover o placeholder quando o vídeo estiver pronto
+        const removeePlaceholder = () => {
+            console.log(`Vídeo ${index + 1} carregado - removendo placeholder`);
+            container.classList.add('loaded');
+            
+            // Remove completamente o placeholder após a transição
+            setTimeout(() => {
+                if (placeholder && placeholder.parentNode) {
+                    placeholder.remove();
+                }
+            }, 500);
+        };
+        
+        // Escuta quando o iframe carrega
+        iframe.addEventListener('load', () => {
+            // Aguarda um pouco para garantir que o vídeo começou
+            setTimeout(removeePlaceholder, 1000);
+        });
+        
+        // Fallback: remove o placeholder após um tempo máximo
+        setTimeout(() => {
+            if (!container.classList.contains('loaded')) {
+                console.log(`Timeout para vídeo ${index + 1} - removendo placeholder`);
+                removeePlaceholder();
+            }
+        }, 5000); // 5 segundos máximo
+    });
+}
 
 // Função para navegação suave (pode ser usada em outras páginas)
 function smoothScrollTo(elementId) {
