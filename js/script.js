@@ -284,7 +284,7 @@ function initVideoPlaceholders() {
                 if (!videoReady) {
                     removePlaceholder();
                 }
-            }, 2500); // Aumentado para 2.5 segundos
+            }, 3000); // Aumentado para 3 segundos
         });
         
         // Método 2: Verifica periodicamente se o vídeo está reproduzindo
@@ -328,7 +328,6 @@ function initVideoPlaceholders() {
         }, 5000); // 5 segundos máximo
     });
 }
-
 
 // Função para navegação suave (pode ser usada em outras páginas)
 function smoothScrollTo(elementId) {
