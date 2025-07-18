@@ -284,7 +284,7 @@ function initVideoPlaceholders() {
                 if (!videoReady) {
                     removePlaceholder();
                 }
-            }, 4000); // Aumentado para 4 segundos
+            }, 5000); // Aumentado para 5 segundos
         });
         
         // Método 2: Verifica periodicamente se o vídeo está reproduzindo
