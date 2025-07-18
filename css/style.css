@@ -197,7 +197,7 @@ h1 {
     z-index: 10;
 }
 
-/* PLACEHOLDER DE VÍDEO - Imagem exibida até o vídeo carregar */
+/* PLACEHOLDER DE VÍDEO - versão melhorada */
 .video-placeholder {
     position: absolute;
     top: 0;
@@ -206,9 +206,9 @@ h1 {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    z-index: 5;
+    z-index: 10; /* Z-index maior para garantir que fique por cima */
     background: var(--dark);
-    transition: opacity 0.5s ease;
+    transition: opacity 0.8s ease-out; /* Transição mais suave */
     border-radius: 10px;
 }
 
@@ -216,9 +216,14 @@ h1 {
 .video-container.loaded .video-placeholder {
     opacity: 0;
     pointer-events: none;
+    z-index: 1; /* Move para baixo após carregar */
 }
 
-/* Garantir que o iframe fique por cima quando carregado */
+/* Garantir que o iframe fique visível quando carregado */
+.video-container iframe {
+    z-index: 5;
+}
+
 .video-container.loaded iframe {
     z-index: 10;
 }
