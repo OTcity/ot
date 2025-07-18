@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Todos os componentes inicializados!');
 });
 
-// Sistema de placeholder para vídeos
+// Sistema de placeholder para vídeos - versão melhorada
 function initVideoPlaceholders() {
     const videoContainers = document.querySelectorAll('.video-container');
     
@@ -259,8 +259,13 @@ function initVideoPlaceholders() {
         
         if (!iframe || !placeholder) return;
         
+        let videoReady = false;
+        
         // Função para remover o placeholder quando o vídeo estiver pronto
-        const removeePlaceholder = () => {
+        const removePlaceholder = () => {
+            if (videoReady) return; // Evita execução múltipla
+            
+            videoReady = true;
             console.log(`Vídeo ${index + 1} carregado - removendo placeholder`);
             container.classList.add('loaded');
             
@@ -272,21 +277,58 @@ function initVideoPlaceholders() {
             }, 1500);
         };
         
-        // Escuta quando o iframe carrega
+        // Método 1: Escuta quando o iframe carrega
         iframe.addEventListener('load', () => {
-            // Aguarda um pouco para garantir que o vídeo começou
-            setTimeout(removeePlaceholder, 1000);
+            // Aguarda mais tempo para garantir que o vídeo do Vimeo esteja pronto
+            setTimeout(() => {
+                if (!videoReady) {
+                    removePlaceholder();
+                }
+            }, 2500); // Aumentado para 2.5 segundos
         });
         
-        // Fallback: remove o placeholder após um tempo máximo
+        // Método 2: Verifica periodicamente se o vídeo está reproduzindo
+        let checkCount = 0;
+        const maxChecks = 20; // Máximo 10 segundos (20 × 500ms)
+        
+        const checkVideoPlaying = setInterval(() => {
+            checkCount++;
+            
+            try {
+                // Tenta acessar o conteúdo do iframe para verificar se está ativo
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+                
+                // Se conseguir acessar ou se passou muito tempo, remove o placeholder
+                if (iframeDoc || checkCount >= maxChecks) {
+                    clearInterval(checkVideoPlaying);
+                    if (!videoReady) {
+                        removePlaceholder();
+                    }
+                }
+            } catch (e) {
+                // Erro de CORS é esperado com Vimeo, mas indica que o iframe está ativo
+                clearInterval(checkVideoPlaying);
+                if (!videoReady) {
+                    setTimeout(() => {
+                        if (!videoReady) {
+                            removePlaceholder();
+                        }
+                    }, 1500);
+                }
+            }
+        }, 500);
+        
+        // Método 3: Fallback final - remove após tempo máximo
         setTimeout(() => {
-            if (!container.classList.contains('loaded')) {
-                console.log(`Timeout para vídeo ${index + 1} - removendo placeholder`);
-                removeePlaceholder();
+            if (!videoReady) {
+                console.log(`Timeout final para vídeo ${index + 1} - removendo placeholder`);
+                clearInterval(checkVideoPlaying);
+                removePlaceholder();
             }
         }, 5000); // 5 segundos máximo
     });
 }
+
 
 // Função para navegação suave (pode ser usada em outras páginas)
 function smoothScrollTo(elementId) {
