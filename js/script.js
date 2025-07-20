@@ -259,73 +259,100 @@ function initVideoPlaceholders() {
         
         if (!iframe || !placeholder) return;
         
-        let videoReady = false;
+        let videoStarted = false;
+        let checkAttempts = 0;
+        const maxAttempts = 60; // 30 segundos máximo (60 × 500ms)
         
-        // Função para remover o placeholder quando o vídeo estiver pronto
+        // Função para remover o placeholder quando o vídeo começar
         const removePlaceholder = () => {
-            if (videoReady) return; // Evita execução múltipla
+            if (videoStarted) return; // Evita execução múltipla
             
-            videoReady = true;
-            console.log(`Vídeo ${index + 1} carregado - removendo placeholder`);
+            videoStarted = true;
+            console.log(`Vídeo ${index + 1} iniciado - removendo placeholder`);
             container.classList.add('loaded');
             
-            // Remove completamente o placeholder após a transição
+            // Remove o placeholder após a transição de fade
             setTimeout(() => {
                 if (placeholder && placeholder.parentNode) {
                     placeholder.remove();
                 }
-            }, 1500);
+            }, 1000);
         };
         
-        // Método 1: Escuta quando o iframe carrega
-        iframe.addEventListener('load', () => {
-            // Aguarda mais tempo para garantir que o vídeo do Vimeo esteja pronto
-            setTimeout(() => {
-                if (!videoReady) {
-                    removePlaceholder();
-                }
-            }, 5000); // Aumentado para 5 segundos
-        });
-        
-        // Método 2: Verifica periodicamente se o vídeo está reproduzindo
-        let checkCount = 0;
-        const maxChecks = 20; // Máximo 10 segundos (20 × 500ms)
-        
-        const checkVideoPlaying = setInterval(() => {
-            checkCount++;
+        // Verifica periodicamente se o vídeo começou a reproduzir
+        const checkVideoStarted = () => {
+            checkAttempts++;
             
             try {
-                // Tenta acessar o conteúdo do iframe para verificar se está ativo
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+                // Tenta detectar se o vídeo está reproduzindo através do iframe
+                const iframeWindow = iframe.contentWindow;
                 
-                // Se conseguir acessar ou se passou muito tempo, remove o placeholder
-                if (iframeDoc || checkCount >= maxChecks) {
-                    clearInterval(checkVideoPlaying);
-                    if (!videoReady) {
+                // Para Vimeo, verifica se há atividade de reprodução
+                if (iframeWindow) {
+                    // Simula detecção de reprodução baseada no tempo
+                    // Se passou tempo suficiente e o iframe está ativo, assume que começou
+                    if (checkAttempts >= 8) { // ~4 segundos
+                        removePlaceholder();
+                        return;
+                    }
+                }
+            } catch (e) {
+                // Erro de CORS é esperado, mas indica iframe ativo
+                // Aguarda um pouco mais antes de remover
+                if (checkAttempts >= 10) { // ~5 segundos
+                    removePlaceholder();
+                    return;
+                }
+            }
+            
+            // Continua verificando se não atingiu o máximo
+            if (checkAttempts < maxAttempts && !videoStarted) {
+                setTimeout(checkVideoStarted, 500);
+            } else if (!videoStarted) {
+                // Fallback final - remove após tempo máximo
+                console.log(`Timeout para vídeo ${index + 1} - removendo placeholder`);
+                removePlaceholder();
+            }
+        };
+        
+        // Método mais confiável: escuta eventos do iframe
+        iframe.addEventListener('load', () => {
+            console.log(`Iframe ${index + 1} carregado - iniciando verificação`);
+            
+            // Aguarda um pouco para o vídeo se preparar, então inicia verificação
+            setTimeout(() => {
+                if (!videoStarted) {
+                    checkVideoStarted();
+                }
+            }, 2000); // 2 segundos após o iframe carregar
+        });
+        
+        // Método adicional: escuta mensagens do Vimeo (se disponível)
+        window.addEventListener('message', (event) => {
+            if (event.origin !== 'https://player.vimeo.com') return;
+            
+            try {
+                const data = JSON.parse(event.data);
+                
+                // Verifica se é evento de play do vídeo
+                if (data.event === 'play' || data.method === 'play') {
+                    console.log(`Vídeo ${index + 1} começou via evento Vimeo`);
+                    if (!videoStarted) {
                         removePlaceholder();
                     }
                 }
             } catch (e) {
-                // Erro de CORS é esperado com Vimeo, mas indica que o iframe está ativo
-                clearInterval(checkVideoPlaying);
-                if (!videoReady) {
-                    setTimeout(() => {
-                        if (!videoReady) {
-                            removePlaceholder();
-                        }
-                    }, 1500);
-                }
+                // Ignora erros de parsing
             }
-        }, 500);
+        });
         
-        // Método 3: Fallback final - remove após tempo máximo
+        // Fallback de segurança - remove após tempo máximo absoluto
         setTimeout(() => {
-            if (!videoReady) {
-                console.log(`Timeout final para vídeo ${index + 1} - removendo placeholder`);
-                clearInterval(checkVideoPlaying);
+            if (!videoStarted) {
+                console.log(`Timeout absoluto para vídeo ${index + 1} - removendo placeholder`);
                 removePlaceholder();
             }
-        }, 5000); // 5 segundos máximo
+        }, 30000); // 30 segundos máximo absoluto
     });
 }
 
